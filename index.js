@@ -1,12 +1,10 @@
 const Discord = require("discord.js");
-const config = require("./config.json");
+const {prefix, token} = require("./config.json");
 
 const client = new Discord.Client();
 
-const prefix = config.PREFIX;
-
 // Bot connects to server
-client.on('ready', () => {
+client.once('ready', () => {
   console.log(`${client.user.tag} is waiting to serve you.`);
 });
 
@@ -23,4 +21,4 @@ client.on('guildMemberAdd', member => {
   channel.send(`Welcome to the server, ${member}`);
 });
 
-client.login(config.BOT_TOKEN);
+client.login(token);
