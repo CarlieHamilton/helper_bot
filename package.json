@@ -2,10 +2,12 @@
     "name": "SEQ Kink Server Sub",
     "verson": "0.0.1",
     "description": "Server Bitch",
-    "main": "bot.js",
+    "main": "index.js",
     "authors": [
         "CarlieHamilton",
         "Squidgi"
     ],
-    "dependencies": {}
+    "dependencies": {
+        "discord.js": "^12.5.1"
+    }
 }
