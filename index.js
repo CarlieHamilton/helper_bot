@@ -44,6 +44,7 @@ client.on("message", (message) => {
   if (lowercaseMessage.includes("dick")) {
     message.channel.send(randomGif);
   }
+//schedule
 
 
 });
