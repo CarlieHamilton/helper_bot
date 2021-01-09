@@ -21,4 +21,13 @@ client.on('guildMemberAdd', member => {
   channel.send(`Welcome to the server, ${member}`);
 });
 
+// Love react to "love" message
+client.on("message", (message) => {
+  const lowercaseMessage = message.content.toLowerCase()
+  if (message.author.bot) return;
+  if (lowercaseMessage.includes("love")) {
+    message.react("❤️");
+  }
+  
+});
 client.login(token);
