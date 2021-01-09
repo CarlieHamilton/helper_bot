@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
+const { DateTime } = require("luxon");
 const {prefix, token} = require("./config.json");
 
 const client = new Discord.Client();
 let sMessage = "";
+let sTime = "";
 
 // Bot connects to server
 client.once('ready', () => {
@@ -19,9 +21,25 @@ client.on('guildMemberAdd', member => {
 client.on("message", (message) => {
   if (message.author.bot) return;
 
-  if (message.content.startsWith(prefix)) {
-    message.reply(`Carlie is the most awesomest person ever`);
+  if (message.content.startsWith(prefix + "schedule")) {
+      let smeg = message.content.split(' ');
+      smeg.shift();
+      sMessage = smeg.join(' ');
+      console.log(sMessage);
+    message.reply("Use !time command to set schedule.");
+
   }
+
+//TIME
+if (message.content.startsWith(prefix + "time")) {
+  let smeg = message.content.split(' ');
+  smeg.shift();
+  let newSmeg = smeg.join(" ")
+  sTime = DateTime.fromFormat(newSmeg,"d-M-yyyy h:ma");
+  console.log(sTime);
+message.reply(`Yay, your message: *${sMessage}* has been scheduled for ${sTime}!`);
+
+}
 
 // Love react to "love" message
   const lowercaseMessage = message.content.toLowerCase()
@@ -31,7 +49,6 @@ client.on("message", (message) => {
 
 
 // Dick gif when "dick" message
-  const lowercaseMessage = message.content.toLowerCase()
   const randomMessage = [
     "https://media.giphy.com/media/yFckZHgsXovLO/giphy.gif",
     "https://media.giphy.com/media/Qc8GJi3L3Jqko/giphy.gif",
@@ -45,14 +62,8 @@ client.on("message", (message) => {
     message.channel.send(randomGif);
   };
 
-//save sMessage
-  if (message.content.startsWith("-"))  {
-    sMessage = "Toaststools";
-    console.log(sMessage)
-  }
 
 //repeat back sMessage as reply
-  console.log(sMessage)
   if (message.content.includes("*"))  {
     message.reply(sMessage)
   }
