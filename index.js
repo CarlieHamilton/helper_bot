@@ -30,4 +30,21 @@ client.on("message", (message) => {
   }
   
 });
+// Dick
+client.on("message", (message) => {
+  if (message.author.bot) return;
+  const lowercaseMessage = message.content.toLowerCase()
+  const randomMessage = ["https://media.giphy.com/media/yFckZHgsXovLO/giphy.gif",
+  "https://media.giphy.com/media/Qc8GJi3L3Jqko/giphy.gif", 
+  "https://media.giphy.com/media/U6btA7Oenk5sk/giphy.gif", 
+  "https://media.giphy.com/media/10McuulZ5ec19K/giphy.gif",
+  "https://media.giphy.com/media/mv7FcziOrIp6o/giphy.gif"]
+  const randomNumber = Math.floor(Math.random() * randomMessage.length)
+  const randomGif = randomMessage[randomNumber]
+  if (lowercaseMessage.includes("dick")) {
+    message.channel.send(randomGif);
+  }
+
+
+});
 client.login(token);
