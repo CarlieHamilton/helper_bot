@@ -44,15 +44,15 @@ client.on("message", (message) => {
   const randomGif = randomMessage[randomNumber]
   if (lowercaseMessage.includes("dick")) {
     message.channel.send(randomGif);
-  }
+  };
 
 //save sMessage
 client.on("message", (message) => {
   if (message.author.bot) return;
   if (!message.content.startsWith("-")) return;
-  sMessage = message.content;
+  sMessage = "Toaststools";
   console.log(sMessage)
-})
+});
 
 //repeat back sMessage as reply
 client.on("message", (message) => {
@@ -60,7 +60,7 @@ client.on("message", (message) => {
   console.log(sMessage)
   if (!message.content.includes("*")) return;
   message.reply(sMessage)
-})
+});
 
 
 });
