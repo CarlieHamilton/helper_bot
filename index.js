@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const {prefix, token} = require("./config.json");
 
 const client = new Discord.Client();
+let sMessage = "";
 
 // Bot connects to server
 client.once('ready', () => {
@@ -30,7 +31,7 @@ client.on("message", (message) => {
   }
   
 });
-// Dick
+// Dick gif when "dick" message
 client.on("message", (message) => {
   if (message.author.bot) return;
   const lowercaseMessage = message.content.toLowerCase()
@@ -44,7 +45,22 @@ client.on("message", (message) => {
   if (lowercaseMessage.includes("dick")) {
     message.channel.send(randomGif);
   }
-//schedule
+
+//save sMessage
+client.on("message", (message) => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith("-")) return;
+  sMessage = message.content;
+  console.log(sMessage)
+})
+
+//repeat back sMessage as reply
+client.on("message", (message) => {
+  if (message.author.bot) return;
+  console.log(sMessage)
+  if (!message.content.includes("*")) return;
+  message.reply(sMessage)
+})
 
 
 });
